@@ -59,6 +59,16 @@ class TestCheckOut(unittest.TestCase):
             checkout("ABCDECBAABCABBAAAEEAA"),
             665
         )
+        self.assertEqual(
+            checkout("ABCDECBAABCABBAAAEEAAFFF"),
+            685
+        )
+
+    def test_checkout_F(self):
+        self.assertEqual(
+            checkout("FFF"),
+            20,
+        )
 
     def test_illegal_input(self):
         self.assertEqual(
@@ -69,8 +79,3 @@ class TestCheckOut(unittest.TestCase):
             checkout("AZ"),
             -1,
         )
-
-
-
-
-
