@@ -97,8 +97,13 @@ def apply_multiple_discounts(discount_list: list[Offers],
         total_price += item_quantity * item_price
     return total_price
 
-def apply_group_buy_discount(group_buy_item_counter: dict[str, int]):
 
+def apply_group_buy_discount(group_buy_item_list: list[str]) -> tuple[int, list]:
+    multi_buy_total_price = 0
+    sorted_list = sorted(group_buy_item_list, key=lambda x: x.price, reverse=True)
+    multi_buy_sets, remainder = divmod(len(sorted_list), 3)
+    multi_buy_total_price += multi_buy_sets * 45
+    return multi_buy_total_price, remainder
 
 
 # noinspection PyUnusedLocal
@@ -110,15 +115,14 @@ def checkout(skus):
 
     total_price = 0
 
-    group_buy_items = ["S","T", "X", "Y", "Z"]
-
-
-    group_buy_item_list = [x for x in item_list if (x in group_buy_items)]
-    non_group_buy_item_list = [x for x in item_list if (x not in group_buy_items)]
+    group_buy_items = ["S", "T", "X", "Y", "Z"]
 
     # group buy discount
-    group_buy_item_counter = dict(Counter(group_buy_item_list))
-    total_price += apply_group_buy_discount(group_buy_item_counter)
+    group_buy_item_list = [x for x in item_list if (x in group_buy_items)]
+    group_buy_discount, group_buy_remainder = apply_group_buy_discount(group_buy_item_list)
+    total_price += group_buy_discount
+
+    non_group_buy_item_list = [x for x in item_list if (x not in group_buy_items)] + group_buy_remainder
 
     # Non group buy items
     item_counter = dict(Counter(non_group_buy_item_list))
@@ -142,6 +146,7 @@ def checkout(skus):
                 item_price=item.price,
             )
     return total_price
+
 
 
 
