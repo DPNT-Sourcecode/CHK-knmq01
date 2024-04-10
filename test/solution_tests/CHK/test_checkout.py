@@ -129,7 +129,7 @@ class TestCheckOut(unittest.TestCase):
     def test_checkout_M(self):
         self.assertEqual(
             checkout("MM"),
-            150,
+            30,
         )
 
     def test_checkout_free_item_M(self):
@@ -139,7 +139,7 @@ class TestCheckOut(unittest.TestCase):
         )
         self.assertEqual(
             checkout("NNNMM"),
-            270,
+            135,
         )
 
     def test_checkout_O(self):
@@ -211,7 +211,7 @@ class TestCheckOut(unittest.TestCase):
         )
         self.assertEqual(
             checkout("VVVVV"),
-            210,
+            220,
         )
         self.assertEqual(
             checkout("VVVVVV"),
