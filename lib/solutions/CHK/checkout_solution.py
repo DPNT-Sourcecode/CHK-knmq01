@@ -27,7 +27,6 @@ class Item:
 
 
 
-
 PRICE_CONFIGS = {
     "A": Item(price=50, offers=[Offers(quantity=3, total_price=130),
                                 Offers(quantity=5, total_price=200)]),
@@ -100,5 +99,6 @@ def checkout(skus):
                 item_price=item.price,
             )
     return total_price
+
 
 

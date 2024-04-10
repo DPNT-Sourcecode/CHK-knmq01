@@ -21,6 +21,10 @@ class TestCheckOut(unittest.TestCase):
             checkout("AA"),
             100,
         )
+        self.assertEqual(
+            checkout("AAAAAAAAAA"),
+            400,
+        )
 
     def test_B_discount(self):
         self.assertEqual(
@@ -57,3 +61,4 @@ class TestCheckOut(unittest.TestCase):
             checkout("AZ"),
             -1,
         )
+
