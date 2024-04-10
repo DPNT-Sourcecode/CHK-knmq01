@@ -1,4 +1,5 @@
 import dataclasses
+from collections import Counter
 from typing import Optional
 
 
@@ -22,8 +23,18 @@ PRICE_CONFIGS = {
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    list_of_items = skus.split()
-    if (x not in list(PRICE_CONFIGS.keys()) for x in list_of_items):
+    item_list = skus.split()
+    if any(x not in list(PRICE_CONFIGS.keys()) for x in item_list):
         return -1
+
+    total_price = 0
+    item_counter = dict(Counter(item_list))
+    for basket_item in list(item_counter.keys()):
+        item = PRICE_CONFIGS.get(basket_item)
+        item_quantity = item_counter[basket_item]
+
+        
+
+
 
 
