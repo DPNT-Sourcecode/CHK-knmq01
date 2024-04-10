@@ -38,6 +38,29 @@ PRICE_CONFIGS = {
     "D": Item(price=15),
     "E": Item(price=40),
     "F": Item(price=10, offers=[Offers(quantity=3, total_price=20)]),
+    "G": Item(price=20),
+    "H": Item(price=10, offers=[Offers(quantity=5, total_price=45),
+                                Offers(quantity=10, total_price=80)]),
+    "I": Item(price=35),
+    "J": Item(price=60),
+    "K": Item(price=80, offers=[Offers(quantity=2, total_price=150)]),
+    "L": Item(price=90),
+    "M": Item(price=15, free_item=FreeItem(required_item="N", required_item_quantity=3)),
+    "N": Item(price=40),
+    "O": Item(price=10),
+    "P": Item(price=50, offers=[Offers(quantity=5, total_price=200)]),
+    "Q": Item(price=30,
+              offers=[Offers(quantity=3, total_price=80)],
+              free_item=FreeItem(required_item="R", required_item_quantity=3)),
+    "R": Item(price=50),
+    "S": Item(price=30),
+    "T": Item(price=20),
+    "U": Item(price=40),
+    "V": Item(price=50),
+    "W": Item(price=20),
+    "X": Item(price=90),
+    "Y": Item(price=10),
+    "Z": Item(price=50),
 }
 
 
@@ -102,3 +125,4 @@ def checkout(skus):
                 item_price=item.price,
             )
     return total_price
+
