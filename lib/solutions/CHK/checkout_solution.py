@@ -97,7 +97,7 @@ def apply_multiple_discounts(discount_list: list[Offers],
         total_price += item_quantity * item_price
     return total_price
 
-def apply_group_buy_discount():
+def apply_group_buy_discount(group_buy_item_counter: dict[str, int]):
 
 
 
@@ -116,8 +116,9 @@ def checkout(skus):
     group_buy_item_list = [x for x in item_list if (x in group_buy_items)]
     non_group_buy_item_list = [x for x in item_list if (x not in group_buy_items)]
 
-    apply_group_buy_discount()
-
+    # group buy discount
+    group_buy_item_counter = dict(Counter(group_buy_item_list))
+    total_price += apply_group_buy_discount(group_buy_item_counter)
 
     # Non group buy items
     item_counter = dict(Counter(non_group_buy_item_list))
@@ -141,6 +142,7 @@ def checkout(skus):
                 item_price=item.price,
             )
     return total_price
+
 
 
 
