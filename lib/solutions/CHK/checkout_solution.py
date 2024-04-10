@@ -99,12 +99,13 @@ def apply_multiple_discounts(discount_list: list[Offers],
 
 
 def apply_group_buy_discount(group_buy_item_list: list[str]) -> tuple[int, list]:
+    breakpoint()
     multi_buy_total_price = 0
     sorted_list = sorted(group_buy_item_list, key=lambda x: PRICE_CONFIGS.get(x).price, reverse=True)
     multi_buy_sets, remainder = divmod(len(sorted_list), 3)
     multi_buy_total_price += multi_buy_sets * 45
 
-    group_buy_remainder = sorted_list[-remainder:]
+    group_buy_remainder = sorted_list[-remainder:] if remainder else []
     return multi_buy_total_price, group_buy_remainder
 
 
@@ -148,4 +149,5 @@ def checkout(skus):
                 item_price=item.price,
             )
     return total_price
+
 
