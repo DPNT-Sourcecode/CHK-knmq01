@@ -64,9 +64,12 @@ def checkout(skus):
         if item.offers is None:
             total_price += item.price * item_quantity
         else:
-            discounted_price, remainder = item.offers.apply_discount(total_items=item_quantity)
-            total_price += discounted_price
-            total_price += item.price * remainder
+            apply_multiple_discounts(
+                discount_list=item.offers,
+                item_quantity=item_quantity,
+                item_price=item.price,
+            )
     return total_price
+
 
 
