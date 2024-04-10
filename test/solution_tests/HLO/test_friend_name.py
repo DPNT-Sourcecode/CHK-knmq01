@@ -9,4 +9,3 @@ class TestHello(unittest.TestCase):
             hello("John"),
             "Hello, John!"
         )
-

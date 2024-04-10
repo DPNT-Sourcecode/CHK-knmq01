@@ -8,6 +8,12 @@ class Offers:
     quantity: int
     total_price: int
 
+    def apply_discount(self, total_items: int) -> tuple[int, int]:
+        bundled_sets, remainder = divmod(total_items, self.quantity)
+        discounted_price = bundled_sets * self.total_price
+        return discounted_price, remainder
+
+
 @dataclasses.dataclass
 class Item:
     price: int
@@ -33,8 +39,8 @@ def checkout(skus):
         item = PRICE_CONFIGS.get(basket_item)
         item_quantity = item_counter[basket_item]
 
-        
-
-
+        if item.offers is None:
+            total_price += item.price * item_quantity
+        else:
 
 
