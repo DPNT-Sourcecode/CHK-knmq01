@@ -229,4 +229,3 @@ class TestCheckOut(unittest.TestCase):
             checkout("A90*"),
             -1,
         )
-
