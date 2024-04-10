@@ -69,6 +69,10 @@ class TestCheckOut(unittest.TestCase):
             checkout("FFF"),
             20,
         )
+        self.assertEqual(
+            checkout("FF"),
+            20,
+        )
 
     def test_illegal_input(self):
         self.assertEqual(
