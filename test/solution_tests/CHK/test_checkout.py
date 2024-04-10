@@ -10,6 +10,14 @@ class TestCheckOut(unittest.TestCase):
             130,
         )
         self.assertEqual(
+            checkout("AAAAA"),
+            200,
+        )
+        self.assertEqual(
+            checkout("AAAAAAAAA"),
+            380,
+        )
+        self.assertEqual(
             checkout("AA"),
             100,
         )
@@ -22,6 +30,16 @@ class TestCheckOut(unittest.TestCase):
         self.assertEqual(
             checkout("B"),
             30,
+        )
+
+    def test_free_item_for_B(self):
+        self.assertEqual(
+            checkout("BEE"),
+            80,
+        )
+        self.assertEqual(
+            checkout("BBBEE"),
+            125,
         )
 
     def test_checkout_multiple_products(self):
