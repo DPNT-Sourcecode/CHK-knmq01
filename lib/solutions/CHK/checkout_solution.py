@@ -59,9 +59,9 @@ PRICE_CONFIGS = {
     "V": Item(price=50, offers=[Offers(quantity=2, total_price=90),
                                 Offers(quantity=3, total_price=130)]),
     "W": Item(price=20),
-    "X": Item(price=90),
-    "Y": Item(price=10),
-    "Z": Item(price=50),
+    "X": Item(price=17),
+    "Y": Item(price=20),
+    "Z": Item(price=21),
 }
 
 
@@ -97,6 +97,9 @@ def apply_multiple_discounts(discount_list: list[Offers],
         total_price += item_quantity * item_price
     return total_price
 
+def apply_group_buy_discount():
+
+
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -107,6 +110,9 @@ def checkout(skus):
 
     total_price = 0
     item_counter = dict(Counter(item_list))
+
+    apply_group_buy_discount()
+
     for basket_item in list(item_counter.keys()):
         item = PRICE_CONFIGS.get(basket_item)
         item_quantity = item_counter[basket_item]
@@ -126,5 +132,6 @@ def checkout(skus):
                 item_price=item.price,
             )
     return total_price
+
 
 
