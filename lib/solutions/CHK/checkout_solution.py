@@ -103,7 +103,9 @@ def apply_group_buy_discount(group_buy_item_list: list[str]) -> tuple[int, list]
     sorted_list = sorted(group_buy_item_list, key=lambda x: x.price, reverse=True)
     multi_buy_sets, remainder = divmod(len(sorted_list), 3)
     multi_buy_total_price += multi_buy_sets * 45
-    return multi_buy_total_price, remainder
+
+    group_buy_remainder = sorted_list[-remainder:]
+    return multi_buy_total_price, group_buy_remainder
 
 
 # noinspection PyUnusedLocal
@@ -146,6 +148,7 @@ def checkout(skus):
                 item_price=item.price,
             )
     return total_price
+
 
 
 
