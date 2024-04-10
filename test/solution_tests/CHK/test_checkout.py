@@ -91,7 +91,7 @@ class TestCheckOut(unittest.TestCase):
         )
         self.assertEqual(
             checkout("HHHHHHHH"),
-            125,
+            75,
         )
         self.assertEqual(
             checkout("HH"),
@@ -200,19 +200,54 @@ class TestCheckOut(unittest.TestCase):
             120,
         )
         self.assertEqual(
-            checkout("UUUUUUUU"),
-            240,
+            checkout("UUUUUUUUU"),
+            280,
+        )
+
+    def test_checkout_V(self):
+        self.assertEqual(
+            checkout("VVVV"),
+            180,
+        )
+        self.assertEqual(
+            checkout("VVVVV"),
+            210,
+        )
+        self.assertEqual(
+            checkout("VVVVVV"),
+            260,
+        )
+
+    def test_checkout_W(self):
+        self.assertEqual(
+            checkout("WW"),
+            40,
+        )
+
+    def test_checkout_X(self):
+        self.assertEqual(
+            checkout("XX"),
+            180,
+        )
+
+    def test_checkout_Y(self):
+        self.assertEqual(
+            checkout("YY"),
+            20,
+        )
+
+    def test_checkout_Z(self):
+        self.assertEqual(
+            checkout("ZZ"),
+            100,
         )
 
     def test_illegal_input(self):
         self.assertEqual(
-            checkout("Z"),
+            checkout("4"),
             -1,
         )
         self.assertEqual(
-            checkout("AZ"),
+            checkout("A90*"),
             -1,
         )
-
-
-
