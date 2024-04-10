@@ -10,6 +10,7 @@ class Offers:
 
     def apply_discount(self, total_items: int) -> tuple[int, int]:
         bundled_sets, remainder = divmod(total_items, self.quantity)
+        breakpoint()
         discounted_price = bundled_sets * self.total_price
         return discounted_price, remainder
 
@@ -99,6 +100,7 @@ def checkout(skus):
                 item_price=item.price,
             )
     return total_price
+
 
 
 
