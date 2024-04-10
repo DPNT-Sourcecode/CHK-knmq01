@@ -113,11 +113,15 @@ class TestCheckOut(unittest.TestCase):
     def test_checkout_K(self):
         self.assertEqual(
             checkout("KKKK"),
-            300,
+            240,
+        )
+        self.assertEqual(
+            checkout("KK"),
+            120,
         )
         self.assertEqual(
             checkout("K"),
-            80,
+            70,
         )
 
     def test_checkout_L(self):
@@ -217,6 +221,10 @@ class TestCheckOut(unittest.TestCase):
         self.assertEqual(
             checkout("ZZYS"),
             65
+        )
+        self.assertEqual(
+            checkout("ZZZYYYYX"),
+            127
         )
 
 
