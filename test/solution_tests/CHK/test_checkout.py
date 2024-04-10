@@ -98,6 +98,50 @@ class TestCheckOut(unittest.TestCase):
             20,
         )
 
+    def test_checkout_I(self):
+        self.assertEqual(
+            checkout("II"),
+            70,
+        )
+
+    def test_checkout_J(self):
+        self.assertEqual(
+            checkout("JJ"),
+            120,
+        )
+
+    def test_checkout_K(self):
+        self.assertEqual(
+            checkout("KKKK"),
+            300,
+        )
+        self.assertEqual(
+            checkout("K"),
+            80,
+        )
+
+    def test_checkout_L(self):
+        self.assertEqual(
+            checkout("LL"),
+            180,
+        )
+
+    def test_checkout_M(self):
+        self.assertEqual(
+            checkout("MM"),
+            150,
+        )
+
+    def test_checkout_free_item_M(self):
+        self.assertEqual(
+            checkout("NNNM"),
+            120,
+        )
+        self.assertEqual(
+            checkout("NNNMM"),
+            270,
+        )
+
     def test_illegal_input(self):
         self.assertEqual(
             checkout("Z"),
@@ -107,4 +151,5 @@ class TestCheckOut(unittest.TestCase):
             checkout("AZ"),
             -1,
         )
+
 
