@@ -13,3 +13,29 @@ class TestCheckOut(unittest.TestCase):
             checkout("A A"),
             100,
         )
+
+    def test_B_discount(self):
+        self.assertEqual(
+            checkout("B B"),
+            45,
+        )
+        self.assertEqual(
+            checkout("B"),
+            30,
+        )
+
+    def test_checkout_multiple_products(self):
+        self.assertEqual(
+            checkout("A B C D"),
+            115,
+        )
+
+    def test_illegal_input(self):
+        self.assertEqual(
+            checkout("Z"),
+            -1,
+        )
+        self.assertEqual(
+            checkout("A Z"),
+            -1,
+        )
