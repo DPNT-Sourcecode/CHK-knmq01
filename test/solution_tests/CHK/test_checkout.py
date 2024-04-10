@@ -218,35 +218,34 @@ class TestCheckOut(unittest.TestCase):
         )
 
     def test_checkout_multi_buy(self):
-        # self.assertEqual(
-        #     checkout("ZZYS"),
-        #     65
-        # )
-        # self.assertEqual(
-        #     checkout("ZZZYYYYX"),
-        #     127
-        # )
-        # self.assertEqual(
-        #     checkout("TTTXZYS"),
-        #     107
-        # )
-        # self.assertEqual(
-        #     checkout("TTTXZYSAAAAA"),
-        #     307
-        # )
+        self.assertEqual(
+            checkout("ZZYS"),
+            65
+        )
+        self.assertEqual(
+            checkout("ZZZYYYYX"),
+            127
+        )
+        self.assertEqual(
+            checkout("TTTXZYS"),
+            107
+        )
+        self.assertEqual(
+            checkout("TTTXZYSAAAAA"),
+            307
+        )
         self.assertEqual(
             checkout("STX"),
             45
         )
-        # self.assertEqual(
-        #     checkout("STXSTX"),
-        #     90
-        # )
-        # self.assertEqual(
-        #     checkout("SSS"),
-        #     90
-        # )
-
+        self.assertEqual(
+            checkout("STXSTX"),
+            90
+        )
+        self.assertEqual(
+            checkout("SSS"),
+            45
+        )
 
     def test_illegal_input(self):
         self.assertEqual(
@@ -257,5 +256,6 @@ class TestCheckOut(unittest.TestCase):
             checkout("A90*"),
             -1,
         )
+
 
 
