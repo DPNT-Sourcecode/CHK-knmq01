@@ -14,6 +14,7 @@ class Offers:
         discounted_price = bundled_sets * self.total_price
         return discounted_price, remainder
 
+
 @dataclasses.dataclass
 class FreeItem:
     required_item: str
@@ -58,6 +59,7 @@ def apply_multiple_discounts(discount_list: list[Offers],
     sorted_discounts = sorted(discount_list, key=lambda x: x.quantity, reverse=True)
 
     total_price = 0
+    breakpoint()
     for discount in sorted_discounts:
         if item_quantity >= discount.quantity:
             discounted_price, remainder = discount.apply_discount(total_items=item_quantity)
@@ -100,6 +102,7 @@ def checkout(skus):
                 item_price=item.price,
             )
     return total_price
+
 
 
 
