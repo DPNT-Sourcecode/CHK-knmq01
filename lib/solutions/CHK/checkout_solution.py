@@ -28,6 +28,26 @@ PRICE_CONFIGS = {
     "D": Item(price=15),
 }
 
+def apply_multiple_discounts(discount_list: list[Offers],
+                             item_quantity: int,
+                             item_price: int):
+    sorted_discounts = sorted(discount_list, key=lambda x: x.quantity, reverse=True)
+
+    total_price = 0
+    for discount in sorted_discounts:
+        if item_quantity >= discount.quantity:
+            discounted_price, remainder = discount.apply_discount(total_items=item_quantity)
+            total_price += discounted_price
+            item_quantity -= discount.quantity
+        else:
+            continue
+
+    if item_quantity > 0:
+        # apply standard price for remainder
+        total_price += item_quantity * item_price
+    return total_price
+
+
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
@@ -48,4 +68,5 @@ def checkout(skus):
             total_price += discounted_price
             total_price += item.price * remainder
     return total_price
+
 
