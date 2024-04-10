@@ -226,6 +226,14 @@ class TestCheckOut(unittest.TestCase):
             checkout("ZZZYYYYX"),
             127
         )
+        self.assertEqual(
+            checkout("TTTXZYS"),
+            107
+        )
+        self.assertEqual(
+            checkout("TTTXZYSAAAAA"),
+            307
+        )
 
 
     def test_illegal_input(self):
@@ -237,3 +245,4 @@ class TestCheckOut(unittest.TestCase):
             checkout("A90*"),
             -1,
         )
+
