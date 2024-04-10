@@ -17,12 +17,13 @@ class Offers:
 @dataclasses.dataclass
 class Item:
     price: int
-    offers: Optional[Offers] = None
+    offers: Optional[list[Offers]] = None
 
 
 PRICE_CONFIGS = {
-    "A": Item(price=50, offers=Offers(quantity=3, total_price=130)),
-    "B": Item(price=30, offers=Offers(quantity=2, total_price=45)),
+    "A": Item(price=50, offers=[Offers(quantity=3, total_price=130),
+                                Offers(quantity=5, total_price=200)]),
+    "B": Item(price=30, offers=[Offers(quantity=2, total_price=45)]),
     "C": Item(price=20),
     "D": Item(price=15),
 }
@@ -47,3 +48,4 @@ def checkout(skus):
             total_price += discounted_price
             total_price += item.price * remainder
     return total_price
+
