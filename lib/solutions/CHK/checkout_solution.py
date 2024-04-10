@@ -10,7 +10,6 @@ class Offers:
 
     def apply_discount(self, total_items: int) -> tuple[int, int]:
         bundled_sets, remainder = divmod(total_items, self.quantity)
-        breakpoint()
         discounted_price = bundled_sets * self.total_price
         return discounted_price, remainder
 
@@ -59,12 +58,12 @@ def apply_multiple_discounts(discount_list: list[Offers],
     sorted_discounts = sorted(discount_list, key=lambda x: x.quantity, reverse=True)
 
     total_price = 0
-    breakpoint()
+
     for discount in sorted_discounts:
         if item_quantity >= discount.quantity:
             discounted_price, remainder = discount.apply_discount(total_items=item_quantity)
             total_price += discounted_price
-            item_quantity -= discount.quantity
+            item_quantity -= (discounted_price // discount.quantity) * discount.quantity
         else:
             continue
 
@@ -102,6 +101,7 @@ def checkout(skus):
                 item_price=item.price,
             )
     return total_price
+
 
 
 

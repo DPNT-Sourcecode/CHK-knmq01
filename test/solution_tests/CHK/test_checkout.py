@@ -5,22 +5,22 @@ from lib.solutions.CHK.checkout_solution import checkout
 
 class TestCheckOut(unittest.TestCase):
     def test_A_discount(self):
-        # self.assertEqual(
-        #     checkout("AAA"),
-        #     130,
-        # )
-        # self.assertEqual(
-        #     checkout("AAAAA"),
-        #     200,
-        # )
-        # self.assertEqual(
-        #     checkout("AAAAAAAAA"),
-        #     380,
-        # )
-        # self.assertEqual(
-        #     checkout("AA"),
-        #     100,
-        # )
+        self.assertEqual(
+            checkout("AAA"),
+            130,
+        )
+        self.assertEqual(
+            checkout("AAAAA"),
+            200,
+        )
+        self.assertEqual(
+            checkout("AAAAAAAAA"),
+            380,
+        )
+        self.assertEqual(
+            checkout("AA"),
+            100,
+        )
         self.assertEqual(
             checkout("AAAAAAAAAA"),
             400,
@@ -34,6 +34,10 @@ class TestCheckOut(unittest.TestCase):
         self.assertEqual(
             checkout("B"),
             30,
+        )
+        self.assertEqual(
+            checkout("BBBB"),
+            90,
         )
 
     def test_free_item_for_B(self):
@@ -51,6 +55,10 @@ class TestCheckOut(unittest.TestCase):
             checkout("ABCD"),
             115,
         )
+        self.assertEqual(
+            checkout("ABCDECBAABCABBAAAEEAA"),
+            665
+        )
 
     def test_illegal_input(self):
         self.assertEqual(
@@ -61,5 +69,6 @@ class TestCheckOut(unittest.TestCase):
             checkout("AZ"),
             -1,
         )
+
 
 
