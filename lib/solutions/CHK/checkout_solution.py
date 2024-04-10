@@ -36,6 +36,7 @@ PRICE_CONFIGS = {
               free_item=FreeItem(required_item="E", required_item_quantity=2)),
     "C": Item(price=20),
     "D": Item(price=15),
+    "E": Item(price=40),
 }
 
 
@@ -99,4 +100,5 @@ def checkout(skus):
                 item_price=item.price,
             )
     return total_price
+
 
