@@ -63,6 +63,7 @@ def apply_multiple_discounts(discount_list: list[Offers],
         if item_quantity >= discount.quantity:
             discounted_price, remainder = discount.apply_discount(total_items=item_quantity)
             total_price += discounted_price
+            breakpoint()
             item_quantity -= (discounted_price // discount.quantity) * discount.quantity
         else:
             continue
@@ -101,6 +102,7 @@ def checkout(skus):
                 item_price=item.price,
             )
     return total_price
+
 
 
 
