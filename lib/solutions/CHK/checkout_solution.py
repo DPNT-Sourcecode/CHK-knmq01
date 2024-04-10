@@ -23,5 +23,7 @@ PRICE_CONFIGS = {
 # skus = unicode string
 def checkout(skus):
     list_of_items = skus.split()
-    if 
+    if (x not in list(PRICE_CONFIGS.keys()) for x in list_of_items):
+        return -1
+
 
