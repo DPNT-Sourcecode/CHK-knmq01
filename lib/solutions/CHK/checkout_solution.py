@@ -30,7 +30,7 @@ PRICE_CONFIGS = {
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    item_list = skus.split()
+    item_list = list(skus)
     if any(x not in list(PRICE_CONFIGS.keys()) for x in item_list):
         return -1
 

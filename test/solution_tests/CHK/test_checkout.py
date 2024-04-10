@@ -6,17 +6,17 @@ from lib.solutions.CHK.checkout_solution import checkout
 class TestCheckOut(unittest.TestCase):
     def test_A_discount(self):
         self.assertEqual(
-            checkout("A A A"),
+            checkout("AAA"),
             130,
         )
         self.assertEqual(
-            checkout("A A"),
+            checkout("AA"),
             100,
         )
 
     def test_B_discount(self):
         self.assertEqual(
-            checkout("B B"),
+            checkout("BB"),
             45,
         )
         self.assertEqual(
@@ -26,7 +26,7 @@ class TestCheckOut(unittest.TestCase):
 
     def test_checkout_multiple_products(self):
         self.assertEqual(
-            checkout("A B C D"),
+            checkout("ABCD"),
             115,
         )
 
@@ -36,6 +36,6 @@ class TestCheckOut(unittest.TestCase):
             -1,
         )
         self.assertEqual(
-            checkout("A Z"),
+            checkout("AZ"),
             -1,
         )
