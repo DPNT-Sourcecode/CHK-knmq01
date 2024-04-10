@@ -109,9 +109,18 @@ def checkout(skus):
         return -1
 
     total_price = 0
-    item_counter = dict(Counter(item_list))
+
+    group_buy_items = ["S","T", "X", "Y", "Z"]
+
+
+    group_buy_item_list = [x for x in item_list if (x in group_buy_items)]
+    non_group_buy_item_list = [x for x in item_list if (x not in group_buy_items)]
 
     apply_group_buy_discount()
+
+
+    # Non group buy items
+    item_counter = dict(Counter(non_group_buy_item_list))
 
     for basket_item in list(item_counter.keys()):
         item = PRICE_CONFIGS.get(basket_item)
@@ -132,6 +141,7 @@ def checkout(skus):
                 item_price=item.price,
             )
     return total_price
+
 
 
 
