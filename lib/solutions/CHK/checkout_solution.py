@@ -55,8 +55,9 @@ PRICE_CONFIGS = {
     "R": Item(price=50),
     "S": Item(price=30),
     "T": Item(price=20),
-    "U": Item(price=40),
-    "V": Item(price=50),
+    "U": Item(price=40, offers=[Offers(quantity=4, total_price=80)]),
+    "V": Item(price=50, offers=[Offers(quantity=2, total_price=90),
+                                Offers(quantity=3, total_price=130)]),
     "W": Item(price=20),
     "X": Item(price=90),
     "Y": Item(price=10),
@@ -125,4 +126,5 @@ def checkout(skus):
                 item_price=item.price,
             )
     return total_price
+
 
