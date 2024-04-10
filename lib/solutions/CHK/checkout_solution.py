@@ -38,12 +38,17 @@ PRICE_CONFIGS = {
     "D": Item(price=15),
 }
 
+
 def apply_free_item(free_item: FreeItem, item_quantity: int, required_item_basket_quantity: int) -> int:
     """Remove free items from total quantity"""
     if not required_item_basket_quantity or required_item_basket_quantity < free_item.required_item_quantity:
         return item_quantity
+    free_items, remainder = divmod(required_item_basket_quantity, free_item.required_item_quantity)
+    item_quantity -= free_items
 
-    
+    if item_quantity <= 0:
+        return 0
+    return item_quantity
 
 
 def apply_multiple_discounts(discount_list: list[Offers],
@@ -79,6 +84,12 @@ def checkout(skus):
         item = PRICE_CONFIGS.get(basket_item)
         item_quantity = item_counter[basket_item]
 
+        if item.free_item is not None:
+            item_quantity = apply_free_item(
+                free_item=item.free_item,
+                item_quantity=item_quantity,
+                required_item_basket_quantity=item_counter.get(item.free_item.required_item),
+            )
         if item.offers is None:
             total_price += item.price * item_quantity
         else:
@@ -88,7 +99,3 @@ def checkout(skus):
                 item_price=item.price,
             )
     return total_price
-
-
-
-
